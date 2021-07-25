@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.amdocs.learnzone.models.User;
@@ -17,9 +18,9 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	public void addUser(User user) throws Exception {
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//	    String encodedPassword = passwordEncoder.encode(user.getPassword());
-//	    user.setPassword(encodedPassword);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    String encodedPassword = passwordEncoder.encode(user.getPassword());
+	    user.setPassword(encodedPassword);
 	    
 	    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
 		LocalDateTime now = LocalDateTime.now();  
