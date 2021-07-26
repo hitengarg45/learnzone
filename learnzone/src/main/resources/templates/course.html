@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>All Courses</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:insert="navbar.html :: navbar">  </div>
+    <div class="container text-center">
+        <h1>Course</h1>
+        <p th:text="${course.courseName}"></p>
+        <p th:text="${course.courseDesc}"></p>
+        <p th:text="${course.courseFees}"></p>
+        <p th:text="${course.courseResource}"></p>
+        <p><a th:href="@{'/courses/update-course-form/' + ${course.courseId}}">Update Course</a></p>
+    </div>
+</body>
+</html>

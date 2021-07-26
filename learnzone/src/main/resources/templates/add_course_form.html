@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add Course - LearnZone</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div>
+            <h1>Add Course</h1>
+        </div>
+        <form th:action="@{/courses/add-course}" th:object="${course}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Course Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{courseName}" class="form-control" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Course Description: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{courseDesc}" class="form-control" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Course Fees: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{courseFees}" class="form-control"
+                            required minlength="1" maxlength="10"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Course Resource: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{courseResource}" class="form-control"
+                            required minlength="2" maxlength="100"/>
+                </div>
+            </div>
+             
+            <div>
+                <button type="submit" class="btn btn-primary">Add Course</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

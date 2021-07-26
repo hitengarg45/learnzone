@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.amdocs.learnzone.models.User;
@@ -27,7 +28,7 @@ public class HomeController {
 	}
 	
 	@PostMapping("/register/add")
-	public String addUser(User user) throws Exception {
+	public String addUser(@ModelAttribute("user") User user) throws Exception {
 		userService.addUser(user);
 	    return "register_success";
 	}

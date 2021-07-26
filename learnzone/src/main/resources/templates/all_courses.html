@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>All Courses</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:insert="navbar.html :: navbar">  </div>
+    <div class="container text-center">
+        <h1>All Courses</h1>
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Course Description</th>
+                        <th>Course Fees</th>
+                        <th>Course Resource</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="course : ${courses}">
+                        <td><a th:href="@{'/courses/' + ${course.courseId}}" th:text="${course.courseName}"></a></td>
+                        <td th:text="${course.courseDesc}"></td>
+                        <td th:text="${course.courseFees}"></td>
+                        <td th:text="${course.courseResource}"></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+     
+</body>
+</html>
