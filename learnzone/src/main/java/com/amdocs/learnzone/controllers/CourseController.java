@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.amdocs.learnzone.models.Course;
 import com.amdocs.learnzone.services.CourseService;
@@ -57,5 +56,11 @@ public class CourseController {
 	public String updateCourse(@ModelAttribute("course") Course course) {
 		courseService.updateCourse(course);
 		return "redirect:/courses/" + course.getCourseId();
+	}
+	
+	@GetMapping("/courses/delete-course/{courseId}")
+	public String deleteCourse(@PathVariable("courseId") Long courseId) {
+		courseService.deleteCourse(courseId);
+		return "redirect:/courses";
 	}
 }

@@ -32,4 +32,8 @@ public class CourseService {
 	public void updateCourse(Course course) {
 		courseRepository.save(course);
 	}
+	
+	public void deleteCourse(Long courseId) {
+		courseRepository.deleteById(courseId);
+	}
 }

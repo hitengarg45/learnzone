@@ -16,6 +16,8 @@
         <p th:text="${course.courseFees}"></p>
         <p th:text="${course.courseResource}"></p>
         <p><a th:href="@{'/courses/update-course-form/' + ${course.courseId}}">Update Course</a></p>
+        <p><a th:href="@{'/courses/delete-course/' + ${course.courseId}}">Delete Course</a></p>
+        <p><a th:href="@{'/courses/' + ${course.courseId} + '/feedback'}">Give FeedBack</a></p>
     </div>
 </body>
 </html>
