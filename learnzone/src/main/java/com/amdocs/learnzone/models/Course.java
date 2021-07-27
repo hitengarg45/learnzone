@@ -1,9 +1,14 @@
 package com.amdocs.learnzone.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -24,14 +29,41 @@ public class Course {
 			}
 		)
 	private long courseId;
+	
 	@Column(name = "course_name", nullable = false)
 	private String courseName;
+	
 	@Column(name = "course_desc", nullable = false)
 	private String courseDesc;
+	
 	@Column(name = "course_fees", nullable = false)
 	private String courseFees;
+	
 	@Column(name = "course_resource", nullable = false)
 	private String courseResource;
+	
+	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
+	private List<Feedback> feedbacks = new ArrayList<>();
+	
+	public Course() {
+		super();
+	}
+	
+	public Course(Long courseId) {
+		super();
+		this.courseId = courseId;
+	}
+	
+	public Course(long courseId, String courseName, String courseDesc, String courseFees, String courseResource) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.courseDesc = courseDesc;
+		this.courseFees = courseFees;
+		this.courseResource = courseResource;
+	}
+
+
 	public long getCourseId() {
 		return courseId;
 	}
@@ -61,5 +93,13 @@ public class Course {
 	}
 	public void setCourseResource(String courseResource) {
 		this.courseResource = courseResource;
+	}
+	
+	public List<Feedback> getFeedbacks() {
+		return feedbacks;
+	}
+
+	public void setFeedbacks(List<Feedback> feedbacks) {
+		this.feedbacks = feedbacks;
 	}
 }

@@ -18,6 +18,12 @@
         <p><a th:href="@{'/courses/update-course-form/' + ${course.courseId}}">Update Course</a></p>
         <p><a th:href="@{'/courses/delete-course/' + ${course.courseId}}">Delete Course</a></p>
         <p><a th:href="@{'/courses/' + ${course.courseId} + '/feedback'}">Give FeedBack</a></p>
+        
+        <h1>Feedbacks</h1>
+        <div th:each="feedback : ${course.feedbacks}">
+            <p th:text="${feedback.feedbackTitle}"></p>
+            <p th:text="${feedback.feedbackMessage}"></p>
+        </div>
     </div>
 </body>
 </html>
